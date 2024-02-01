@@ -8,5 +8,10 @@ export class CartPage {
     isOnTheCartList(productName) {
         cy.get(`${this.cartItem} ${this.inventoryItemName}`).contains(productName).should('exist')
     }
+    goToCheckout() {
+        cy.get(this.checkoutBtn).click()
+        cy.contains('Checkout: Your Information')
+        cy.url(Cypress.env().baseUrl).should('include', '/checkout-step-one.html')
+    }
 
 }

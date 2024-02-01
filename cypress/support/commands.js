@@ -12,3 +12,9 @@ Cypress.Commands.add('addProduct', (product, number) => {
     inventoryPage.addToCart(product)
     inventoryPage.verifyCartNumber(number)
 })
+Cypress.Commands.add('openCartWithTwoProducts', (product1, product2) => {
+    inventoryPage.addToCart(product1)
+    inventoryPage.addToCart(product2)
+    inventoryPage.verifyCartNumber(2)
+    inventoryPage.goToCartPage()
+})

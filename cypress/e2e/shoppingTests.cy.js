@@ -1,8 +1,11 @@
+import * as Products from '../support/products'
 import { InventoryPage } from '../pages/inventoryPage'
 import { CartPage } from '../pages/cartPage'
-import * as Products from '../support/products'
+import { CheckoutPage } from '../pages/checkoutPage'
+import { faker } from '@faker-js/faker'
 const inventoryPage = new InventoryPage()
 const cartPage = new CartPage()
+const checkoutPage = new CheckoutPage()
 
 describe('Saucelabs - Online Shop - Cart Tests', () => {
     beforeEach(() => {
@@ -29,5 +32,20 @@ describe('Saucelabs - Online Shop - Cart Tests', () => {
         inventoryPage.goToCartPage()
         cartPage.isOnTheCartList(Products.backpack.name)
         cartPage.isOnTheCartList(Products.tShirt.name)
+    })
+    it('should add 2 products and proceed to checkout', () => {
+        cy.openCartWithTwoProducts(Products.backpack.selector, Products.tShirt.selector)
+        cartPage.goToCheckout()
+    })
+    it('should verify Checkout form empty fields validation', () => {
+        cy.openCartWithTwoProducts(Products.backpack.selector, Products.tShirt.selector)
+        cartPage.goToCheckout()
+        checkoutPage.validateEmptyFieldsError()
+    })
+    it('should fill Checkout form and proceed to Overview', () => {
+        cy.openCartWithTwoProducts(Products.backpack.selector, Products.tShirt.selector)
+        cartPage.goToCheckout()
+        checkoutPage.fillForm(faker.person.firstName(), faker.person.lastName(), faker.location.zipCode())
+        checkoutPage.goToOverview()
     })
   })
