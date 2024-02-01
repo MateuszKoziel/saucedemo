@@ -1,5 +1,6 @@
 import { InventoryPage } from '../pages/inventoryPage'
 const inventoryPage = new InventoryPage()
+
 Cypress.Commands.add('login', (username, password) => {
   cy.visit('/')
   cy.get('[data-test="username"]').type(username)
