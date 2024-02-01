@@ -5,7 +5,7 @@ export class CartPage {
     cartItem = '.cart_item'
     inventoryItemName = '.inventory_item_name'
 
-    isOnTheCartList(productName) {
+    isOnTheCartList(productName: string) {
         cy.get(`${this.cartItem} ${this.inventoryItemName}`).contains(productName).should('exist')
     }
     goToCheckout() {

@@ -12,7 +12,7 @@ export class CheckoutPage {
         cy.get(this.postalCode).should('have.class', 'error')
         cy.get(this.errorMessage).should('be.visible')
     }
-    fillForm(clientName, clientLastName, clientPostalCode) {
+    fillForm(clientName: string, clientLastName: string, clientPostalCode: string) {
         cy.get(this.firstName).type(clientName)
         cy.get(this.lastName).type(clientLastName)
         cy.get(this.postalCode).type(clientPostalCode)

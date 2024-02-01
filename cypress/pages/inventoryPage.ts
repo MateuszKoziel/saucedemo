@@ -12,19 +12,19 @@ export class InventoryPage {
             cy.wrap($el).find(this.addToCartButton).click()
         })
     }
-    removeProduct(product) {
+    removeProduct(product: string) {
         return `[data-test="remove-${product}"]`
     }
-    verifyProductNumber(number) {
+    verifyProductNumber(number: number) {
         return cy.get(this.inventoryContainer).find(this.inventoryItem).its('length').should('eq', number)
     }
-    addToCart(product) {
+    addToCart(product: string) {
         cy.get(this.addOneProduct(product)).click()
     }
-    removeFromCart(product) {
+    removeFromCart(product: string) {
         cy.get(this.removeProduct(product)).click()
     }
-    verifyCartNumber(expectedNumber) {
+    verifyCartNumber(expectedNumber: number) {
         if (expectedNumber === 0) {
             cy.get(this.shoppingCart).find('span').should('not.exist')
         } else {

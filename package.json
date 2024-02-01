@@ -1,14 +1,14 @@
 {
   "name": "saucedemo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Test Repository",
+  "main": ".eslintrc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MateuszKoziel/saucedemo.git"
+    "url": "https://github.com/MateuszKoziel/saucedemo.git"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,13 @@
   "homepage": "https://github.com/MateuszKoziel/saucedemo#readme",
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",
-    "cypress": "^13.6.3"
+    "@types/cypress": "^1.1.3",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.16",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "cypress": "^13.6.3",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
   }
 }
