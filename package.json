@@ -5,7 +5,9 @@
   "main": ".eslintrc.js",
   "scripts": {
     "cy:run": "npx cypress run",
-    "cy:open": "npx cypress open"
+    "cy:open": "npx cypress open",
+    "lint": "npx eslint .",
+    "prettier": "npx prettier -w ."
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "@typescript-eslint/parser": "^6.20.0",
     "cypress": "^13.6.3",
     "eslint": "^8.56.0",
+    "prettier": "3.2.4",
     "typescript": "^5.3.3"
   }
 }
