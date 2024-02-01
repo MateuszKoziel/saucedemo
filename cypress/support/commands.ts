@@ -1,4 +1,4 @@
-import { InventoryPage } from '../pages/inventoryPage'
+import { InventoryPage } from 'pages/inventoryPage'
 const inventoryPage = new InventoryPage()
 
 Cypress.Commands.add('login', (username, password) => {

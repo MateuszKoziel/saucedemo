@@ -2,12 +2,13 @@
   "name": "saucedemo",
   "version": "1.0.0",
   "description": "Test Repository",
-  "main": ".eslintrc.js",
+  "main": "index.js",
   "scripts": {
     "cy:run": "npx cypress run",
     "cy:open": "npx cypress open",
     "lint": "npx eslint --fix .",
     "format": "npx prettier -w .",
+    "lint-format": "npm run lint && npm run format",
     "prepare": "husky install"
   },
   "repository": {

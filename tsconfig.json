@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "target": "es5",
     "lib": ["es5", "dom"],
     "types": ["cypress"],
+    "paths": {
+      "e2e/*": ["cypress/e2e/*"],
+      "fixtures/*": ["cypress/fixtures/*"],
+      "pages/*": ["cypress/pages/*"],
+      "support/*": ["cypress/support/*"],
+    },
   },
   "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
 }

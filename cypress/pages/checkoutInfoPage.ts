@@ -1,4 +1,4 @@
-export class CheckoutPage {
+export class CheckoutInfoPage {
   continueBtn = '[data-test="continue"]'
   firstName = '[data-test="firstName"]'
   lastName = '[data-test="lastName"]'

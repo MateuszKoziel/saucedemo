@@ -1,13 +1,15 @@
-import * as Products from '../support/products'
-import { InventoryPage } from '../pages/inventoryPage'
-import { CartPage } from '../pages/cartPage'
-import { CheckoutPage } from '../pages/checkoutPage'
+import * as Products from 'support/products'
+import { InventoryPage } from 'pages/inventoryPage'
+import { CartPage } from 'pages/cartPage'
+import { CheckoutInfoPage } from 'pages/checkoutInfoPage'
 import { faker } from '@faker-js/faker'
+import { CheckoutOverviewPage } from 'pages/checkoutOverviewPage'
 const inventoryPage = new InventoryPage()
 const cartPage = new CartPage()
-const checkoutPage = new CheckoutPage()
+const checkoutInfoPage = new CheckoutInfoPage()
+const checkoutOverviewPage = new CheckoutOverviewPage()
 
-describe('Saucelabs - Online Shop - Cart Tests', () => {
+describe('Saucelabs - Online Shop - Cart & Checkout Tests', () => {
   beforeEach(() => {
     cy.login('standard_user', 'secret_sauce')
     inventoryPage.verifyProductNumber(6)
@@ -46,7 +48,7 @@ describe('Saucelabs - Online Shop - Cart Tests', () => {
       Products.tShirt.selector
     )
     cartPage.goToCheckout()
-    checkoutPage.validateEmptyFieldsError()
+    checkoutInfoPage.validateEmptyFieldsError()
   })
   it('should fill Checkout form and proceed to Overview', () => {
     cy.openCartWithTwoProducts(
@@ -54,11 +56,26 @@ describe('Saucelabs - Online Shop - Cart Tests', () => {
       Products.tShirt.selector
     )
     cartPage.goToCheckout()
-    checkoutPage.fillForm(
+    checkoutInfoPage.fillForm(
       faker.person.firstName(),
       faker.person.lastName(),
       faker.location.zipCode()
     )
-    checkoutPage.goToOverview()
+    checkoutInfoPage.goToOverview()
+  })
+  it('should verify if prices of added products are correct in Overview and finalize order', () => {
+    cy.openCartWithTwoProducts(
+      Products.backpack.selector,
+      Products.tShirt.selector
+    )
+    cartPage.goToCheckout()
+    checkoutInfoPage.fillForm(
+      faker.person.firstName(),
+      faker.person.lastName(),
+      faker.location.zipCode()
+    )
+    checkoutInfoPage.goToOverview()
+    checkoutOverviewPage.verifyTotalPrices()
+    checkoutOverviewPage.finishOrder()
   })
 })
