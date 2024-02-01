@@ -3,16 +3,26 @@ export class InventoryPage {
     inventoryItem = '.inventory_item'
     shoppingCart = '.shopping_cart_container'
 
-    getProduct(product) {
+    addProduct(product) {
         return `[data-test="add-to-cart-${product}"]`
+    }
+    removeProduct(product) {
+        return `[data-test="remove-${product}"]`
     }
     verifyProductNumber(number) {
         return cy.get(this.inventoryContainer).find(this.inventoryItem).its('length').should('eq', number)
     }
     addToCart(product) {
-        cy.get(this.getProduct(product)).click()
+        cy.get(this.addProduct(product)).click()
     }
-    verifyCartNumber(number) {
-        cy.get(this.shoppingCart).find('span').should('have.text', number)
+    removeFromCart(product) {
+        cy.get(this.removeProduct(product)).click()
+    }
+    verifyCartNumber(expectedNumber) {
+        if (expectedNumber === 0) {
+            cy.get(this.shoppingCart).find('span').should('not.exist')
+        } else {
+            cy.get(this.shoppingCart).find('span').should('have.text', expectedNumber);
+        }
     }
 }
