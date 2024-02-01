@@ -55,6 +55,7 @@ npm run cy:open
 - [Cypress](https://www.cypress.io/) - End-to-end testing framework
 - [ESLint](https://eslint.org/) - Linting tool for maintaining code quality
 - [Prettier](https://prettier.io/) - An opinionated code formatter
+- [Husky](https://typicode.github.io/husky/#/) - A tool to ensure code quality and consistency. Husky manages Git hooks, which trigger linting and formatting tasks before commits are made.
 
 ## 📖 Documentation
 
