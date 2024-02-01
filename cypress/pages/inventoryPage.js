@@ -4,7 +4,7 @@ export class InventoryPage {
     shoppingCart = '.shopping_cart_container'
     addToCartButton = '[data-test^="add-to-cart-"]'
 
-    addProduct(product) {
+    addOneProduct(product) {
         return `[data-test="add-to-cart-${product}"]`
     }
     addAllProductsToCart() {
@@ -19,7 +19,7 @@ export class InventoryPage {
         return cy.get(this.inventoryContainer).find(this.inventoryItem).its('length').should('eq', number)
     }
     addToCart(product) {
-        cy.get(this.addProduct(product)).click()
+        cy.get(this.addOneProduct(product)).click()
     }
     removeFromCart(product) {
         cy.get(this.removeProduct(product)).click()
@@ -30,6 +30,11 @@ export class InventoryPage {
         } else {
             cy.get(this.shoppingCart).find('span').should('have.text', expectedNumber);
         }
+    }
+    goToCartPage() {
+        cy.get(this.shoppingCart).click()
+        cy.contains('Your Cart')
+        cy.url(Cypress.env().baseUrl).should('include', '/cart.html')
     }
     
 }
