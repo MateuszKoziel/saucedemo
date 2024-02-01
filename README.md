@@ -54,6 +54,7 @@ npm run cy:open
 
 - [Cypress](https://www.cypress.io/) - End-to-end testing framework
 - [ESLint](https://eslint.org/) - Linting tool for maintaining code quality
+- [Prettier](https://prettier.io/) - An opinionated code formatter
 
 ## 📖 Documentation
 
