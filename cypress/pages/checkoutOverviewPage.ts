@@ -35,6 +35,7 @@ export class CheckoutOverviewPage {
           })
       })
   }
+  
   finishOrder() {
     cy.get(this.finishBtn).click()
     cy.contains('Checkout: Complete!')

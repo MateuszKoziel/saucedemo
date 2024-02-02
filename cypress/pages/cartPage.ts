@@ -10,6 +10,7 @@ export class CartPage {
       .contains(productName)
       .should('exist')
   }
+  
   goToCheckout() {
     cy.get(this.checkoutBtn).click()
     cy.contains('Checkout: Your Information')

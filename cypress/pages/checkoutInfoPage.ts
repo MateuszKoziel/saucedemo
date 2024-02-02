@@ -12,6 +12,7 @@ export class CheckoutInfoPage {
     cy.get(this.postalCode).should('have.class', 'error')
     cy.get(this.errorMessage).should('be.visible')
   }
+
   fillForm(
     clientName: string,
     clientLastName: string,
@@ -21,6 +22,7 @@ export class CheckoutInfoPage {
     cy.get(this.lastName).type(clientLastName)
     cy.get(this.postalCode).type(clientPostalCode)
   }
+  
   goToOverview() {
     cy.get(this.continueBtn).click()
     cy.contains('Checkout: Overview')

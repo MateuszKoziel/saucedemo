@@ -49,6 +49,7 @@ npm run cy:open
 - Removing products from the cart
 - Verifying number of products in the cart
 - Verifying validation of empty fields in checkout form
+- Checkout and finalizing the order
 
 ## 🛠️ Built With
 

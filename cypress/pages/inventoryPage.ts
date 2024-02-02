@@ -7,6 +7,7 @@ export class InventoryPage {
   addOneProduct(product) {
     return `[data-test="add-to-cart-${product}"]`
   }
+
   addAllProductsToCart() {
     cy.get(this.inventoryContainer)
       .find(this.inventoryItem)
@@ -14,9 +15,11 @@ export class InventoryPage {
         cy.wrap($el).find(this.addToCartButton).click()
       })
   }
+
   removeProduct(product: string) {
     return `[data-test="remove-${product}"]`
   }
+
   verifyProductNumber(number: number) {
     return cy
       .get(this.inventoryContainer)
@@ -24,12 +27,15 @@ export class InventoryPage {
       .its('length')
       .should('eq', number)
   }
+
   addToCart(product: string) {
     cy.get(this.addOneProduct(product)).click()
   }
+
   removeFromCart(product: string) {
     cy.get(this.removeProduct(product)).click()
   }
+
   verifyCartNumber(expectedNumber: number) {
     if (expectedNumber === 0) {
       cy.get(this.shoppingCart).find('span').should('not.exist')
@@ -37,6 +43,7 @@ export class InventoryPage {
       cy.get(this.shoppingCart).find('span').should('have.text', expectedNumber)
     }
   }
+  
   goToCartPage() {
     cy.get(this.shoppingCart).click()
     cy.contains('Your Cart')
